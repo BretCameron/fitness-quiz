@@ -7,7 +7,7 @@
   "license": "GPL",
   "scripts": {
     "start": "cd client && yarn start && cd ..",
-    "build": "cd client && yarn run build && cd .."
+    "build": "cd client && yarn && yarn run build && cd .."
   },
   "dependencies": {
     "node-sass": "^4.12.0"
