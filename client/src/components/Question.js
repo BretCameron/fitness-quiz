@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import uuid from 'uuid';
 
 export default class Question extends Component {
+
   render() {
     const { questions, questionNumber, handleClick } = this.props;
     const { question, description, answers } = questions[questionNumber];

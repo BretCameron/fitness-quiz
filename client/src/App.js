@@ -18,6 +18,8 @@ const mostFrequent = arr => {
   return arr[map.indexOf(Math.max.apply(null, map))];
 }
 
+let height;
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -30,21 +32,32 @@ class App extends React.Component {
     this.formRef = React.createRef();
   }
 
+  sendPostMessage = () => {
+    if (height !== document.querySelector('body').offsetHeight) {
+      height = document.querySelector('body').offsetHeight;
+      window.parent.postMessage({
+        frameHeight: height
+      }, '*');
+    }
+  }
+
+  componentDidMount() {
+    window.onload = () => this.sendPostMessage();
+    window.onresize = () => this.sendPostMessage();
+  }
+
   handleClick = (e) => {
     if (this.state.questionNumber < questions.length - 1) {
       this.setState({
         questionNumber: this.state.questionNumber + 1,
         outcomes: [...this.state.outcomes, e.currentTarget.getAttribute('outcome')],
         answers: [...this.state.answers, e.currentTarget.id],
-      })
+      }, this.sendPostMessage);
     } else if (this.state.questionNumber === questions.length - 1) {
       this.setState({
         outcomes: [...this.state.outcomes, e.currentTarget.getAttribute('outcome')],
         answers: [...this.state.answers, e.currentTarget.id],
       }, this.handleSubmit);
-      // this.formRef.current.submit();
-      // setTimeout(this.handleSubmit(), 1000);
-      window.location.href = outcomes[mostFrequent(this.state.outcomes)];
     }
   }
 
@@ -56,6 +69,9 @@ class App extends React.Component {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({ "form-name": "result", ...this.state.answers })
     })
+      .then(() => {
+        window.location.href = outcomes[mostFrequent(this.state.outcomes)];
+      })
       .catch(error => alert(error));
   }
 
@@ -68,7 +84,8 @@ class App extends React.Component {
           <Question
             questions={questions}
             questionNumber={questionNumber}
-            handleClick={this.handleClick} />
+            handleClick={this.handleClick}
+          />
         </div>
 
         <form ref={this.formRef} name="result" method="POST" style={{ visibility: "visible" }} onSubmit={this.handleSubmit} hidden>
