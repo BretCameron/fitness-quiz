@@ -4,6 +4,13 @@ import ProgressBar from './components/ProgressBar';
 import Question from './components/Question';
 import questions from './data/questions';
 import outcomes from './data/outcomes';
+import uuid from 'uuid';
+
+const encode = (data) => {
+  return Object.keys(data)
+    .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+    .join("&");
+}
 
 const mostFrequent = arr => {
   arr = arr.filter(Boolean);
@@ -20,6 +27,7 @@ class App extends React.Component {
       answers: [...startingAnswers],
       outcomes: [],
     }
+    this.formRef = React.createRef();
   }
 
   handleClick = (e) => {
@@ -34,13 +42,28 @@ class App extends React.Component {
         outcomes: [...this.state.outcomes, e.currentTarget.getAttribute('outcome')],
         answers: [...this.state.answers, e.currentTarget.id],
       });
-      window.location.href = outcomes[mostFrequent(this.state.outcomes)];
+      // this.formRef.current.submit();
+      this.handleSubmit();
+      // window.location.href = outcomes[mostFrequent(this.state.outcomes)];
     }
-    console.log(this.state.answers)
+  }
+
+  handleSubmit = (e) => {
+    if (e) e.preventDefault();
+
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({ "form-name": "result", ...this.state.answers })
+    })
+      .then(() => console.log(...this.state.answers))
+      .catch(error => alert(error));
+
+    console.log('Submitted!');
   }
 
   render() {
-    const { questionNumber } = this.state;
+    const { questionNumber, answers } = this.state;
     return (
       <div>
         <ProgressBar questionNumber={questionNumber} />
@@ -50,6 +73,17 @@ class App extends React.Component {
             questionNumber={questionNumber}
             handleClick={this.handleClick} />
         </div>
+
+        <form ref={this.formRef} name="result" method="POST" style={{ visibility: "visible" }} onSubmit={this.handleSubmit} hidden>
+          <input type="hidden" name="form-name" value="result" />
+          {questions.map((el, i) => {
+            const key = uuid();
+            return (
+              <input key={key} type="text" name={i} value={answers[i]} readOnly />
+            )
+          })}
+          <button type="submit">Send</button>
+        </form>
       </div>
     );
   }
