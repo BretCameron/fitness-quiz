@@ -1,7 +1,23 @@
 [
   {
+    "question": "What's your <strong>gender<strong>?",
+    "description": "Our fitness programs work for both!",
+    "answers": [
+      {
+        "answer": "Male",
+        "outcome": "",
+        "image": ""
+      },
+      {
+        "answer": "Female",
+        "outcome": "",
+        "image": ""
+      }
+    ]
+  },
+  {
     "question": "What's your <strong>age range<strong>?",
-    "description": "",
+    "description": "It's never too late to take control of your fitness!",
     "answers": [
       {
         "answer": "Teens",
@@ -37,7 +53,7 @@
   },
   {
     "question": "What best describes your <strong>current physique</strong>?",
-    "description": "",
+    "description": "DMF's training programs offer the flexibility to focus on a variety of fitness goals.",
     "answers": [
       {
         "answer": "I have a low amount of body fat but want to build more muscle.",
@@ -58,7 +74,7 @@
   },
   {
     "question": "How much <strong>training experience</strong> do you have?",
-    "description": "",
+    "description": "Our programs offer different levels of customisation, depending on your experience.",
     "answers": [
       {
         "answer": "I have trained for less than 6 months.",

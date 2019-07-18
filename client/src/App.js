@@ -25,7 +25,7 @@ class App extends React.Component {
         outcomes: [...this.state.outcomes, e.currentTarget.getAttribute('outcome')],
         answers: [...this.state.answers, e.currentTarget.id],
       })
-    } else if (this.state.answers.length < 3) {
+    } else if (this.state.questionNumber === questions.length - 1) {
       this.setState({
         outcomes: [...this.state.outcomes, e.currentTarget.getAttribute('outcome')],
         answers: [...this.state.answers, e.currentTarget.id],
