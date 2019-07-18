@@ -41,10 +41,10 @@ class App extends React.Component {
       this.setState({
         outcomes: [...this.state.outcomes, e.currentTarget.getAttribute('outcome')],
         answers: [...this.state.answers, e.currentTarget.id],
-      });
+      }, this.handleSubmit);
       // this.formRef.current.submit();
-      this.handleSubmit();
-      // window.location.href = outcomes[mostFrequent(this.state.outcomes)];
+      // setTimeout(this.handleSubmit(), 1000);
+      window.location.href = outcomes[mostFrequent(this.state.outcomes)];
     }
   }
 
@@ -56,10 +56,7 @@ class App extends React.Component {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({ "form-name": "result", ...this.state.answers })
     })
-      .then(() => console.log(...this.state.answers))
       .catch(error => alert(error));
-
-    console.log('Submitted!');
   }
 
   render() {
