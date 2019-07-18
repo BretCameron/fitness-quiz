@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Ubuntu&display=swap');
+
+$accentColor: rgb(96, 96, 255);
+
+body {
+  margin: 0;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 20px;
+  max-width: 700px;
+}
+
+/* button {
+  color: rgb(255, 255, 255);
+  background: rgb(0, 117, 178);
+  font-size: 24px;
+  border: none;
+} */
+
+strong {
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 800;
+}
+
+.question {
+  text-align: center;
+  font-family: 'Ubuntu', sans-serif;
+  margin: 50px 0;
+  font-weight: 100;
+}
+
+.answer-grid {
+  display: grid;
+  justify-content: center;
+  text-align: center;
+  margin: 50px 0px;
+  grid-gap: 10px;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+@media only screen and (max-width: 550px) {
+  .answer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .progress-name {
+    // visibility: hidden;
+    font-size: 0.9rem;
+  }
+}
+
+.answer-grid > button {
+  /* width: 300px; */
+  padding: 20px 30px;
+  font-family: 'Open Sans', sans-serif;
+  background: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform 200ms ease-out, background-color 50ms ease-out,
+    color 50ms ease-out;
+  border-radius: 2px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.answer-grid > button:hover {
+  transform: translateY(-3px) scale(1);
+  background-color: $accentColor;
+  color: white;
+}
+
+.answer-grid > button:active {
+  transform: translateY(-3px) scale(0.98);
+}
+
+/* Ubuntu - header
+Open sans - button */
+
+.progress-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  justify-content: space-between;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  text-transform: uppercase;
+  color: white;
+  background: black;
+  padding: 20px 0 0 0;
+}
+
+.progress {
+  width: calc(100% - 2px);
+  height: 25px;
+  background: white;
+}
+
+.progress.current {
+  background: linear-gradient(to right, $accentColor 0% 50%, white 50% 100%);
+}
+
+.progress.complete {
+  background: $accentColor;
+}
+
+.progress.first {
+  background: $accentColor;
+  border-radius: 10px 0 0 10px;
+}
+
+.progress.last {
+  border-radius: 0 10px 10px 0;
+}
+
+.progress-bar {
+  background: black;
+  padding: 0 30px;
+}
+
+.progress-triangle {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 15px solid transparent;
+  padding-top: 30px;
+  left: calc(50% - 10px);
+  position: relative;
+}
+
+.progress-triangle.current {
+  border-bottom-color: white;
+}

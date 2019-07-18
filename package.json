@@ -1,0 +1,14 @@
+{
+  "name": "fitness-quiz",
+  "version": "1.0.0",
+  "description": "A fitness quiz for DesignMyFit",
+  "main": "server.js",
+  "author": "Bret Cameron",
+  "license": "GPL",
+  "scripts": {
+    "start": "cd client && yarn start && cd .."
+  },
+  "dependencies": {
+    "node-sass": "^4.12.0"
+  }
+}

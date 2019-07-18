@@ -1,0 +1,80 @@
+[
+  {
+    "question": "What's your <strong>age range<strong>?",
+    "description": "",
+    "answers": [
+      {
+        "answer": "Teens",
+        "outcome": "",
+        "image": ""
+      },
+      {
+        "answer": "20s",
+        "outcome": "",
+        "image": ""
+      },
+      {
+        "answer": "30s",
+        "outcome": "",
+        "image": ""
+      },
+      {
+        "answer": "40s",
+        "outcome": "",
+        "image": ""
+      },
+      {
+        "answer": "50s",
+        "outcome": "",
+        "image": ""
+      },
+      {
+        "answer": "60s",
+        "outcome": "",
+        "image": ""
+      }
+    ]
+  },
+  {
+    "question": "What best describes your <strong>current physique</strong>?",
+    "description": "",
+    "answers": [
+      {
+        "answer": "I have a low amount of body fat but want to build more muscle.",
+        "outcome": "hypertrophy",
+        "image": ""
+      },
+      {
+        "answer": "I have a good amount of muscle and want to maximise my strength while maintaining mass.",
+        "outcome": "strength",
+        "image": ""
+      },
+      {
+        "answer": "I'm skinny fat. I need to build more muscle but there's still fat covering my abs.",
+        "outcome": "combined",
+        "image": ""
+      }
+    ]
+  },
+  {
+    "question": "How much <strong>training experience</strong> do you have?",
+    "description": "",
+    "answers": [
+      {
+        "answer": "I have trained for less than 6 months.",
+        "outcome": "",
+        "image": ""
+      },
+      {
+        "answer": "I have followed a consistent training plan for 12 months.",
+        "outcome": "",
+        "image": ""
+      },
+      {
+        "answer": "I have followed a consistent training plan for 24 months or longer.",
+        "outcome": "",
+        "image": ""
+      }
+    ]
+  }
+]
