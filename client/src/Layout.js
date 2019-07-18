@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import App from './App';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import ProgressBar from './components/ProgressBar';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import questions from './data/questions';
 
 export default class Layout extends Component {
   render() {
@@ -29,6 +31,18 @@ export default class Layout extends Component {
                 startingQuestion="1"
                 startingAnswers={["Female"]}
                 startingOutcomes={[]}
+              />
+            )} />
+          <Route path="/progress/gender"
+            render={(props) => (
+              <ProgressBar {...props}
+                questionNumber="0"
+              />
+            )} />
+          <Route path="/progress/result"
+            render={(props) => (
+              <ProgressBar {...props}
+                questionNumber={questions.length}
               />
             )} />
         </Router>

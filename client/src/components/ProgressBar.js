@@ -25,9 +25,9 @@ export default class ProgressBar extends Component {
                   <p className="progress-name">{el}</p>
                   <div className={`progress
               ${i === 0 ? ' first' : i === Object.keys(data).length - 1 ? ' last' : ''}
-              ${i === questionNumber ? ' current' : i < questionNumber ? ' complete' : ''}`}>
+              ${i === Number(questionNumber) ? ' current' : i < Number(questionNumber) ? ' complete' : ''}`}>
                   </div>
-                  <div className={`progress-triangle ${i === questionNumber ? ' current' : ''}`} />
+                  <div className={`progress-triangle ${i === Number(questionNumber) ? ' current' : ''}`} />
                 </div>
               )
             })}
