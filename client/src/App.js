@@ -12,10 +12,14 @@ const mostFrequent = arr => {
 }
 
 class App extends React.Component {
-  state = {
-    questionNumber: 0,
-    answers: [],
-    outcomes: [],
+  constructor(props) {
+    super(props);
+    const { startingQuestion, startingAnswers } = this.props;
+    this.state = {
+      questionNumber: Number(startingQuestion),
+      answers: [...startingAnswers],
+      outcomes: [],
+    }
   }
 
   handleClick = (e) => {
@@ -32,6 +36,7 @@ class App extends React.Component {
       });
       window.location.href = outcomes[mostFrequent(this.state.outcomes)];
     }
+    console.log(this.state.answers)
   }
 
   render() {

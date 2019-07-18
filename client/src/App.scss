@@ -89,6 +89,11 @@ Open sans - button */
   padding: 20px 0 0 0;
 }
 
+.progress-grid > div {
+  min-width: 0;
+  min-height: 0;
+}
+
 .progress {
   width: calc(100% - 2px);
   height: 25px;
