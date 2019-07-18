@@ -180,6 +180,14 @@ Open sans - button */
   }
 
   .answer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .answer-grid.two-items {
+    grid-template-columns: 1fr;
+  }
+
+  .answer-grid.three-items {
     grid-template-columns: 1fr;
   }
 
@@ -197,10 +205,6 @@ Open sans - button */
   .progress-bar {
     background: black;
     padding: 0 5px;
-  }
-
-  .answer-grid {
-    grid-template-columns: 1fr;
   }
 
   .progress-name {
