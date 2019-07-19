@@ -270,6 +270,19 @@ Open sans - button */
     padding: 0;
   }
 
+  .progress-grid {
+    padding-top: 5px;
+  }
+
+  .progress-triangle {
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 10px solid transparent;
+    padding-top: 15px;
+    left: calc(50% - 7px);
+    position: relative;
+  }
+
   .progress-name {
     // visibility: hidden;
     font-size: 0.7rem;
