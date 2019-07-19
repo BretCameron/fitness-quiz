@@ -6,6 +6,9 @@ import questions from './data/questions';
 import outcomes from './data/outcomes';
 import uuid from 'uuid';
 
+let height;
+const submitForm = false;
+
 const encode = (data) => {
   return Object.keys(data)
     .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
@@ -17,8 +20,6 @@ const mostFrequent = arr => {
   let map = arr.map((a) => arr.filter((b) => a === b).length);
   return arr[map.indexOf(Math.max.apply(null, map))];
 }
-
-let height;
 
 class App extends React.Component {
   constructor(props) {
@@ -64,15 +65,19 @@ class App extends React.Component {
   handleSubmit = (e) => {
     if (e) e.preventDefault();
 
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({ "form-name": "result", ...this.state.answers })
-    })
-      .then(() => {
-        window.location.href = outcomes[mostFrequent(this.state.outcomes)];
+    if (submitForm) {
+      fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encode({ "form-name": "result", ...this.state.answers })
       })
-      .catch(error => alert(error));
+        .then(() => {
+          window.location.href = outcomes[mostFrequent(this.state.outcomes)];
+        })
+        .catch(error => alert(error));
+    } else {
+      window.location.href = outcomes[mostFrequent(this.state.outcomes)];
+    }
   }
 
   render() {
