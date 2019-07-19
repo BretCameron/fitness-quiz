@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.scss';
+import './iframe.scss';
 import ProgressBar from './components/ProgressBar';
 import Question from './components/Question';
 import Footer from './components/Footer';
@@ -37,11 +38,11 @@ class App extends React.Component {
   componentDidMount() {
     window.onload = () => this.sendPostMessage();
     window.onresize = () => this.sendPostMessage();
-    window.onmessage = (e) => {
-      if (e.data.useIframe) {
-        require('./iframe.scss');
-      };
-    }
+    // window.onmessage = (e) => {
+    // if (e.data.useIframe) {
+    // require('./iframe.scss');
+    // };
+    // }
   }
 
   sendPostMessage = () => {
