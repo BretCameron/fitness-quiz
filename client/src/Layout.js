@@ -42,7 +42,7 @@ export default class Layout extends Component {
           <Route path="/progress/result"
             render={(props) => (
               <ProgressBar {...props}
-                questionNumber={questions.length}
+                questionNumber={questions.length + 1}
               />
             )} />
         </Router>

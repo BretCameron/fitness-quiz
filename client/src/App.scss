@@ -6,10 +6,71 @@ body {
   margin: 0;
 }
 
+#document {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  flex-flow: column nowrap;
+  flex-grow: 1;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+footer {
+  flex-shrink: 0;
+}
+
 .container {
   margin: 0 auto;
   padding: 0 20px;
   max-width: 700px;
+}
+
+.footer {
+  background: black;
+  color: white;
+  padding: 30px 0;
+  margin-top: 50px;
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  font-size: 0.85rem;
+  color: grey;
+
+  a {
+    color: grey;
+  }
+
+  strong {
+    font-weight: 800;
+    color: white;
+
+    a {
+      color: white;
+    }
+  }
+
+  em {
+    font-weight: 800;
+    font-style: italic;
+  }
+
+  .logo {
+    max-width: 100px;
+    padding: 20px 0;
+  }
+
+  .social-icon {
+    max-width: 28px;
+    padding: 5px 20px;
+  }
+
+  hr {
+    max-width: 75px;
+    border: none;
+    border-top: 1px dotted grey;
+  }
 }
 
 /* button {

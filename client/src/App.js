@@ -2,12 +2,12 @@ import React from 'react';
 import './App.scss';
 import ProgressBar from './components/ProgressBar';
 import Question from './components/Question';
+import Footer from './components/Footer';
 import questions from './data/questions';
 import outcomes from './data/outcomes';
 import uuid from 'uuid';
 
-let height;
-const submitForm = false;
+let height, submitForm = false;
 
 const encode = (data) => {
   return Object.keys(data)
@@ -45,6 +45,11 @@ class App extends React.Component {
   componentDidMount() {
     window.onload = () => this.sendPostMessage();
     window.onresize = () => this.sendPostMessage();
+    window.onmessage = (e) => {
+      if (e.data.useIframe) {
+        require('./iframe.scss');
+      };
+    }
   }
 
   handleClick = (e) => {
@@ -83,26 +88,30 @@ class App extends React.Component {
   render() {
     const { questionNumber, answers } = this.state;
     return (
-      <div>
-        <ProgressBar questionNumber={questionNumber} />
-        <div className="container">
-          <Question
-            questions={questions}
-            questionNumber={questionNumber}
-            handleClick={this.handleClick}
-          />
-        </div>
-
-        <form ref={this.formRef} name="result" method="POST" style={{ visibility: "visible" }} onSubmit={this.handleSubmit} hidden>
-          <input type="hidden" name="form-name" value="result" />
-          {questions.map((el, i) => {
-            const key = uuid();
-            return (
-              <input key={key} type="text" name={i} value={answers[i]} readOnly />
-            )
-          })}
-          <button type="submit">Send</button>
-        </form>
+      <div id="document">
+        <main>
+          <ProgressBar questionNumber={questionNumber} />
+          <div className="container">
+            <Question
+              questions={questions}
+              questionNumber={questionNumber}
+              handleClick={this.handleClick}
+            />
+          </div>
+          <form ref={this.formRef} name="result" method="POST" style={{ visibility: "visible" }} onSubmit={this.handleSubmit} hidden>
+            <input type="hidden" name="form-name" value="result" />
+            {questions.map((el, i) => {
+              const key = uuid();
+              return (
+                <input key={key} type="text" name={i} value={answers[i]} readOnly />
+              )
+            })}
+            <button type="submit">Send</button>
+          </form>
+        </main>
+        <footer>
+          <Footer />
+        </footer>
       </div>
     );
   }
