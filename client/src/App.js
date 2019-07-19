@@ -72,11 +72,11 @@ class App extends React.Component {
         body: encode({ "form-name": "result", ...this.state.answers })
       })
         .then(() => {
-          window.location.href = outcomes[mostFrequent(this.state.outcomes)];
+          window.top.location.href = outcomes[mostFrequent(this.state.outcomes)];
         })
         .catch(error => alert(error));
     } else {
-      window.location.href = outcomes[mostFrequent(this.state.outcomes)];
+      window.top.location.href = outcomes[mostFrequent(this.state.outcomes)];
     }
   }
 
