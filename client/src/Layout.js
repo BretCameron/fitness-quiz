@@ -3,11 +3,16 @@ import App from './App';
 import ProgressBar from './components/ProgressBar';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import questions from './data/questions';
+import FadeIn from './animation/fadeIn';
 
 export default class Layout extends Component {
+  componentDidMount() {
+    document.getElementById('pre-render').style.display = 'none';
+  }
+
   render() {
     return (
-      <div>
+      <FadeIn>
         <Router>
           <Route path="/" exact
             render={(props) => (
@@ -46,7 +51,7 @@ export default class Layout extends Component {
               />
             )} />
         </Router>
-      </div>
+      </FadeIn>
     )
   }
 }
