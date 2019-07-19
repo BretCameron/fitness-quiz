@@ -33,14 +33,6 @@ class App extends React.Component {
     this.formRef = React.createRef();
   }
 
-  sendPostMessage = () => {
-    if (height !== document.querySelector('body').offsetHeight) {
-      height = document.querySelector('body').offsetHeight;
-      window.parent.postMessage({
-        frameHeight: height
-      }, '*');
-    }
-  }
 
   componentDidMount() {
     window.onload = () => this.sendPostMessage();
@@ -49,6 +41,15 @@ class App extends React.Component {
       if (e.data.useIframe) {
         require('./iframe.scss');
       };
+    }
+  }
+
+  sendPostMessage = () => {
+    if (height !== document.querySelector('main').offsetHeight) {
+      height = document.querySelector('main').offsetHeight + 30;
+      window.parent.postMessage({
+        frameHeight: height
+      }, '*');
     }
   }
 
