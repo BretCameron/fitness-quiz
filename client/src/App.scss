@@ -29,7 +29,9 @@ footer {
 }
 
 .footer {
-  background: black;
+  background: black url('./images/footer.webp');
+  background-repeat: no-repeat;
+  background-size: cover;
   color: white;
   padding: 30px 0;
   margin-top: 50px;
