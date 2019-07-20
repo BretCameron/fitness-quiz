@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import uuid from 'uuid';
 
-export default class ProgressBar extends Component {
+export default class ProgressBar extends React.PureComponent {
   render() {
 
     const data = {

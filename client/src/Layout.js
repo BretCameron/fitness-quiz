@@ -1,13 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import App from './App';
 import ProgressBar from './components/ProgressBar';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import questions from './data/questions';
 import FadeIn from './animation/fadeIn';
 
-export default class Layout extends Component {
+export default class Layout extends React.PureComponent {
   componentDidMount() {
-    document.getElementById('pre-render').style.display = 'none';
+    // document.getElementById('pre-render').style.display = 'none';
+  }
+
+  shouldComponentUpdate = (nextProps, nextState) => {
+    return false;
   }
 
   render() {

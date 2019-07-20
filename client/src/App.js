@@ -22,7 +22,7 @@ const mostFrequent = arr => {
   return arr[map.indexOf(Math.max.apply(null, map))];
 }
 
-class App extends React.Component {
+class App extends React.PureComponent {
   constructor(props) {
     super(props);
     const { startingQuestion, startingAnswers } = this.props;
@@ -33,7 +33,6 @@ class App extends React.Component {
     }
     this.formRef = React.createRef();
   }
-
 
   componentDidMount() {
     window.onload = () => this.sendPostMessage();

@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import uuid from 'uuid';
 
-export default class Question extends Component {
+export default class Question extends React.PureComponent {
 
   render() {
     const { questions, questionNumber, handleClick } = this.props;
