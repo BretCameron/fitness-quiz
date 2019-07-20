@@ -1,9 +1,17 @@
 import React from 'react';
 import uuid from 'uuid';
 
-export default class ProgressBar extends React.PureComponent {
-  render() {
+export default class ProgressBar extends React.Component {
+  shouldComponentUpdate = (nextProps, nextState) => {
+    const { shouldComponentUpdate } = this.props;
+    if (typeof shouldComponentUpdate === 'undefined') {
+      return true;
+    } else {
+      return shouldComponentUpdate;
+    }
+  }
 
+  render() {
     const data = {
       'Gender': require('../images/gender.svg'),
       'Age': require('../images/age.svg'),
@@ -21,8 +29,12 @@ export default class ProgressBar extends React.PureComponent {
               const key = uuid();
               return (
                 <div key={key}>
-                  <img className="progress-icon" src={data[el]} alt={el} />
-                  <p className="progress-name">{el}</p>
+                  <img style={{ height: '45px' }} className="progress-icon"
+                    src={data[el]}
+                    alt={el} />
+                  <p style={{ height: '19px' }}
+                    className="progress-name"
+                  >{el}</p>
                   <div className={`progress
               ${i === 0 ? ' first' : i === Object.keys(data).length - 1 ? ' last' : ''}
               ${i === Number(questionNumber) ? ' current' : i < Number(questionNumber) ? ' complete' : ''}`}>

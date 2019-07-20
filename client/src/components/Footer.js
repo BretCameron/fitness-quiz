@@ -1,10 +1,6 @@
 import React from 'react'
 
 export default class Footer extends React.PureComponent {
-  shouldComponentUpdate = (nextProps, nextState) => {
-    return false;
-  }
-
   render() {
     return (
       <div className="footer">

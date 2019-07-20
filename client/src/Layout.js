@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import questions from './data/questions';
 import FadeIn from './animation/fadeIn';
 
-export default class Layout extends React.PureComponent {
+export default class Layout extends React.Component {
   componentDidMount() {
     // document.getElementById('pre-render').style.display = 'none';
   }
@@ -16,8 +16,8 @@ export default class Layout extends React.PureComponent {
 
   render() {
     return (
-      <FadeIn>
-        <Router>
+      <Router>
+        <FadeIn>
           <Route path="/" exact
             render={(props) => (
               <App {...props}
@@ -42,20 +42,22 @@ export default class Layout extends React.PureComponent {
                 startingOutcomes={[]}
               />
             )} />
-          <Route path="/progress/gender"
-            render={(props) => (
-              <ProgressBar {...props}
-                questionNumber="0"
-              />
-            )} />
-          <Route path="/progress/result"
-            render={(props) => (
-              <ProgressBar {...props}
-                questionNumber={questions.length + 1}
-              />
-            )} />
-        </Router>
-      </FadeIn>
+        </FadeIn>
+        <Route path="/progress/gender"
+          render={(props) => (
+            <ProgressBar {...props}
+              questionNumber="0"
+              shouldComponentUpdate="false"
+            />
+          )} />
+        <Route path="/progress/result"
+          render={(props) => (
+            <ProgressBar {...props}
+              questionNumber={questions.length + 1}
+              shouldComponentUpdate="false"
+            />
+          )} />
+      </Router>
     )
   }
 }
